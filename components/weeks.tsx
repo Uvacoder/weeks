@@ -1,20 +1,30 @@
 import Head from "next/head";
 import Link from "next/link";
 import Dot from "./dot";
+import Date from "./date";
+
 import Button from "@mui/material/Button";
+import Stack from '@mui/material/Stack';
+
+import React from "react";
+import { Box } from "@mui/system";
 
 export default function Weeks(props) {
-  var arr = [1, 2, 3];
-  var renderedOutput = arr.map((item) => <div> {item} </div>);
-  console.log(renderedOutput);
-
+  const [birth, setBirth] = React.useState<any>(null);
   return (
     <>
       <Head>
         <title>Weeks</title>
       </Head>
       <>
-        <Button variant="contained">Hello World</Button>;{generateCircles(25)}
+
+        <Box m={2} sx={{ display: "grid" }}>
+        <Date selected={birth} update={setBirth} />
+        
+        </Box>
+        <Box sx={{ display: "inline-grid" }}>
+          <Button variant="contained">Hello World</Button>;{generateCircles(25)}
+        </Box>
       </>
     </>
   );
